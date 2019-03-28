@@ -92,8 +92,6 @@ def operacional(request):
 
 def copa(request):
     copa = Alimentacao.objects.all()
-    data = Alimentacao.objects.get(id=id)
-    data.copa = timezone.now()
-    data.save()
-    return render(request, 'core/copa.html', {'copa': copa, 'data':data})
+
+    return render(request, 'core/copa.html', {'copa': copa})
 
