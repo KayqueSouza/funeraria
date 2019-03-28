@@ -1,0 +1,9 @@
+<h2>Lista Mov Rotativo</h2>
+
+<ul>
+{%for mov_rotativo in mov_rotativos%}
+<li> {{mov_rotativo.checkin}} - {{mov_rotativo.veiculo.placa}}</li>
+
+{%endfor%}
+
+</ul>
