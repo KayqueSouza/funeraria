@@ -18,7 +18,7 @@ def copa_update(request, id):
     tent.save()
     print('passou por aqui')
     dataa = {'servico':servico, 'tent':tent}
-    return render(request, 'core/copa.html', dataa )
+    return render(request, 'core/copa.html', dataa)
 
 
 
