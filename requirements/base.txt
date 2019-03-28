@@ -1,0 +1,8 @@
+dj-database-url
+django-cache-url
+django-cors-headers
+django-filter
+Django
+prettyconf
+psycopg2
+Unipath

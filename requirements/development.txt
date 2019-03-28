@@ -1,0 +1,8 @@
+-r base.txt
+django-extensions
+ipdb
+ipython
+pre-commit
+Sphinx
+sphinx-autobuild
+sphinx-rtd-theme
