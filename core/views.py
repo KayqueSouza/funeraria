@@ -90,9 +90,9 @@ def operacional(request):
     alimentacao = Alimentacao.objects.all()
     return render(request, 'core/operacional.html', {'alimentacao':alimentacao})
 
-def copa(request, pk):
+def copa(request):
     copa = Alimentacao.objects.all()
-    data = Alimentacao.objects.get(pk=pk)
+    data = Alimentacao.objects.get(id=id)
     data.copa = timezone.now()
     data.save()
     return render(request, 'core/copa.html', {'copa': copa, 'data':data})
