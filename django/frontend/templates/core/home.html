@@ -13,17 +13,11 @@
     <li class="breadcrumb-item">
       <a href="#">Dashboard</a>
     </li>
-    <li class="breadcrumb-item active">Visão Geral</li>
+    <li class="breadcrumb-item active">{{ page_title }}</li>
   </ol>
   <div class="row">
-    <a href="{% url 'core:operacional' %}">Operacional</a>
+    <a href="{% url 'ordem_servico:listagem' %}">Operacional</a>
   </div>
-
-
-    {{ mensagem }}
-
-
-
 
   <h1>Exemplos para vc usar depois</h1>
 

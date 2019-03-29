@@ -2,6 +2,7 @@ dj-database-url
 django-cache-url
 django-cors-headers
 django-filter
+django-stuff
 Django
 prettyconf
 psycopg2

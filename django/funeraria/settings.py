@@ -100,8 +100,10 @@ INSTALLED_APPS = [
     #  3rd party libs
     'django_filters',
     'corsheaders',
+    'django_stuff',
     #  local libs
-    'core',
+    'apps.core',
+    'apps.ordem_servico',
 ]
 
 AUTH_PASSWORD_VALIDATORS = [
