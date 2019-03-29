@@ -1,64 +1,81 @@
+{% load static %}
+
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Funeraria | Log in</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Sistema Metropax - Entrar</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template-->
+  <link href="{% static 'css/sb-admin.css' %}" rel="stylesheet">
 
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
 
-  <!-- /.login-logo -->
-  <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+<body class="bg-dark">
 
-    <form action="" method="post" id="login_form" class="sign-box">
-      {% csrf_token %}
-      {% if form.non_field_errors %}
-      {% for err in form.non_field_errors %}
-      <h4 class="alert alert-warning">{{ err }}</h4>
-      {% endfor %}
+<div class="container">
+  <div class="card card-login mx-auto mt-5">
+    <div class="card-header">Sistema Metropax</div>
+    <div class="card-body">
+      {% if form.errors %}
+        <article class="message is-danger">
+          <div class="message-body">
+            "Seu usuario/email ou senha estão incorretos. Por favor, tente novamente!"
+          </div>
+        </article>
       {% endif %}
-      <div class="form-group has-feedback" id="group-id-username">
-        <input type="text" name="username" class="form-control" placeholder="{% trans 'Username or Email' %}">
-        {% if form.username.errors %}
-        <p class="error-login">{{ form.username.errors.as_text }}</p>
-        <script>
-            $('#group-id-username').addClass("has-error");
-        </script>
-        {% endif %}
-      </div>
-      <div class="form-group has-feedback" id="group-id-password">
-        <input type="password" name="password" class="form-control" placeholder="{% trans 'Password' %}">
-        {% if form.password.errors %}
-        <p class="error-login">{{ form.password.errors.as_text }}</p>
-        <script>
-            $('#group-id-password').addClass("has-error");
-        </script>
-        {% endif %}
-      </div>
-
-      <div class="col-xs-8">
-        <div class="checkbox icheck">
-          <label>
-            <input type="checkbox"> Remember Me
-          </label>
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <div class="form-group">
+          <div class="form-label-group">
+            <input type="text" name="username" class="form-control" placeholder="Username or Email address"
+                   id="id_username" autofocus="autofocus" required="required">
+            <label for="username">Usuário/Email</label>
+          </div>
         </div>
+        <div class="form-group">
+          <div class="form-label-group">
+            <input type="password" name="password" id="id_password" placeholder="Password" required="required">
+            <label for="password">Senha</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="remember-me">
+              Lembrar Senha
+            </label>
+          </div>
+        </div>
+        <div class="form-group last">
+          <input class="button btn-primary btn-block" type="submit" value="Entrar"/>
+        </div>
+      </form>
+      <div class="text-center">
+          <a class=" d-block small" href="">Esqueceu a senha?</a>
       </div>
-      <!-- /.col -->
-      <div class="col-xs-4">
-        <button type="submit" class="btn btn-primary btn-block btn-flat">{% trans 'Sign In' %}</button>
-      </div>
-      <!-- /.col -->
-
-    </form>
-
+    </div>
   </div>
-  <!-- /.login-box-body -->
 </div>
 
+<!-- Bootstrap core JavaScript-->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
 </body>
+
 </html>
