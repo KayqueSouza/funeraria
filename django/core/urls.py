@@ -1,11 +1,9 @@
-from django.urls import path, include
-from .views import (home, operacional, copa)
+from django.urls import path
+from core import views
 
+app_name = 'core'
 urlpatterns = [
-    
-    path('operacional/', operacional, name = 'operacional'),
-    path('copa/', copa, name='copa_copa'),
-    path('', home, name='core_home')
-
-
+    path('', views.HomeView.as_view(), name='home'),
+    path('operacional/', views.operacional, name='operacional'),
+    path('copa/', views.copa, name='copa_copa'),
 ]

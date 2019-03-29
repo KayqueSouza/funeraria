@@ -1,37 +1,37 @@
+{% extends '../base.html' %}
+{% load static %}
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel = "stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">    
-    <title>Sistema Metropax by Victor</title>
-</head>
-<body>
-hummmmmm <br> <br>
+{% block content %}
+  <div class="card mb-3">
+    <div class="card-header">
+      <i class="fas fa-table"></i>
+      Lista Serviços
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" width="100%" cellspacing="0">
+          <thead>
+          <tr>
+            <th>OS</th>
+            <th>Falecido</th>
+            <th>Ação</th>
+          </tr>
+          </thead>
+          </tbody>
+          {% for ordem in ordem_servicos %}
+          <tr>
+            <td>{{ ordem.os }}</td>
+            <td>{{ ordem.falecido }}</td>
+            <td>
+              <button> Finalizar</button>
+            </td>
+          </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card-footer small text-muted"></div>
+  </div>
 
-<h2>Lista Serviços</h2>
-
-<ul>
-{%for alimen in servico%}
-<li> {{alimen.os}} ---- {{alimen.falecido}}  ---- <button> Finalizar </button></li> <p> <p>
-
-{%endfor%}
-
-</ul>
-
-
-<a href="http://127.0.0.1:8000/">Voltar</a>
-
-    {%block main%}
-
-
-    {%endblock%}
-
-
-
-
-</body>
-
-</html>
+{% endblock %}

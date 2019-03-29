@@ -1,4 +1,4 @@
-"""funeraria URL Configuration
+"""Sistema Metropax URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.1/topics/http/urls/
@@ -13,19 +13,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
-from django.urls import path, include
 
-admin.site.site_header = 'Sistema de Funeraria Admin'
-admin.site.site_title = 'Sistema de Funeraria'
-
+admin.site.site_header = 'Sistema Metropax Admin'
+admin.site.site_title = 'Sistema Metropax'
 
 urlpatterns = [
-    path('login/', auth_views.LoginView.as_view(template_name="login.html"), name='login'),
-    path('logout/', auth_views.logout_then_login, name='logout'),
-    path('admin/', admin.site.urls),
-
-    path('core/', include('core.urls')),
-    path('', include('core.urls')),
+    url(r'login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
+    url(r'logout/', auth_views.logout_then_login, name='logout'),
+    url(r'admin/', admin.site.urls),
+    url(r'', include('core.urls')),
 ]

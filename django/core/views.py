@@ -1,35 +1,36 @@
-from django.shortcuts import render, redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render
+from django.views.generic import TemplateView
+
 from .models import Servico
-from django.utils import timezone
 
 
-def home(request):
-    context = {'mensagem':'Ola mundo no contexto'}
-    return render(request, 'core/index.html', context)
+class HomeView(LoginRequiredMixin, TemplateView):
+    template_name = "core/home.html"
 
-
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_title'] = 'Dashboard'
+        context['mensagem'] = 'Ola mundo no contexto'
+        return context
 
 
 def copa_update(request, id):
-    data = {}
     servico = Servico.objects.get(id=2)
     tent = Servico.objetos.filter(id=2).first()
     tent.falecido = tent.falecido + "alterado!"
     tent.save()
     print('passou por aqui')
-    dataa = {'servico':servico, 'tent':tent}
-    return render(request, 'core/copa.html', dataa)
-
-
-
+    data = {'servico': servico, 'tent': tent}
+    return render(request, 'core/copa.html', data)
 
 
 def operacional(request):
-    servico = Servico.objects.all()
-    return render(request, 'core/operacional.html', {'servico':servico})
+    ordem_servicos = Servico.objects.all()
+    return render(request, 'core/operacional.html', {'ordem_servicos': ordem_servicos})
+
 
 def copa(request):
-    copa = Servico.objects.all()
+    servico = Servico.objects.all()
 
-    return render(request, 'core/copa.html', {'copa': copa})
-
+    return render(request, 'core/copa.html', {'servico': servico})
