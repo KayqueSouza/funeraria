@@ -8,7 +8,6 @@
 
 {% block content %}
 
-  {{ mensagem }}
   <!-- Breadcrumbs-->
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
@@ -18,9 +17,10 @@
   </ol>
   <div class="row">
     <a href="{% url 'core:operacional' %}">Operacional</a>
-
   </div>
 
+
+    {{ mensagem }}
 
 
 
