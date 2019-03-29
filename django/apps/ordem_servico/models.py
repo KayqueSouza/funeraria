@@ -19,40 +19,40 @@ class TipoServico(TimestampedModel):
         return self.tipo_servico
 
 
-class TaxasPagar(TimestampedModel):
-    taxas_pagar = models.CharField(max_length=15)
+class TaxaPagar(TimestampedModel):
+    taxa = models.CharField(max_length=15)
 
     def __str__(self):
-        return self.taxas_pagar
+        return self.taxa
 
 
 class LocalRemocao(TimestampedModel):
-    local_remocao = models.CharField(max_length=40)
+    local = models.CharField(max_length=40)
 
     def __str__(self):
-        return self.local_remocao
+        return self.local
 
 
 class Preparacao(TimestampedModel):
-    preparacao = models.CharField(max_length=50)
+    nome = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.preparacao
+        return self.nome
 
 
 class Ornamentacao(TimestampedModel):
-    ornamentacao = models.CharField(max_length=40)
+    nome = models.CharField(max_length=40)
 
     def __str__(self):
-        return self.ornamentacao
+        return self.nome
 
 
-class Funerarias(TimestampedModel):
-    funeraria = models.CharField(max_length=50)
+class Funeraria(TimestampedModel):
+    nome = models.CharField(max_length=50)
     cnpj = models.CharField(max_length=30)
 
     def __str__(self):
-        return self.funeraria
+        return self.nome
 
 
 class TipoCafe(TimestampedModel):
@@ -63,7 +63,7 @@ class TipoCafe(TimestampedModel):
 
 
 class OrdemServico(TimestampedModel):
-    funeraria = models.ForeignKey(Funerarias, on_delete=models.CASCADE)
+    funeraria = models.ForeignKey(Funeraria, on_delete=models.CASCADE)
 
     falecido = models.CharField(max_length=50)
     cpf_falecido = models.CharField(max_length=50)
@@ -72,7 +72,7 @@ class OrdemServico(TimestampedModel):
     abrangencia = models.CharField(max_length=22, default='servico_completo', choices=ABRANGENCIA)
 
     tipo = models.ForeignKey(TipoServico, on_delete=models.CASCADE)
-    taxas_apagar = models.ForeignKey(TaxasPagar, on_delete=models.CASCADE)
+    taxas_apagar = models.ForeignKey(TaxaPagar, on_delete=models.CASCADE)
     remocao = models.ForeignKey(LocalRemocao, on_delete=models.CASCADE)
 
     codigo = models.IntegerField()
