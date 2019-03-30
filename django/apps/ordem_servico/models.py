@@ -10,6 +10,11 @@ TIPO_SERVICO = (
     ('falta_falecer', 'Falta Falecer'),
     ('iml', 'IML')
 )
+STATUS = (
+    ('aberto', 'Aberto'),
+    ('executando', 'Executando'),
+    ('fechado', 'Fechado')
+)
 
 
 class TipoServico(TimestampedModel):
@@ -106,6 +111,8 @@ class OrdemServico(TimestampedModel):
     termino_cafe = models.DateTimeField(blank=True, null=True)
     inicio_flora = models.DateTimeField(blank=True, null=True)
     termino_flora = models.DateTimeField(blank=True, null=True)
+
+    status = models.CharField(max_length=22, default='aberto', choices=STATUS)
 
     def __str__(self):
         return self.falecido

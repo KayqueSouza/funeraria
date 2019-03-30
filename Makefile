@@ -1,6 +1,3 @@
-include .env
-UI_DIR=ui
-
 clean:
 	@find . -iname '*.pyc' -delete
 	@find . -iname '*.pyo' -delete

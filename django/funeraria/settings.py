@@ -1,4 +1,4 @@
-from pathlib import Path
+from unipath import Path
 
 from dj_database_url import parse as parse_db_url
 from django_cache_url import parse as parse_cache_url
@@ -6,9 +6,9 @@ from prettyconf import config
 
 
 #  Project Structure
-BASE_DIR = Path(__file__).absolute().parents[2]
-PROJECT_DIR = Path(__file__).absolute().parents[1]
-FRONTEND_DIR = PROJECT_DIR / "frontend"
+BASE_DIR = Path(__file__).ancestor(3)
+PROJECT_DIR = Path(__file__).ancestor(2)
+FRONTEND_DIR = PROJECT_DIR.child("frontend")
 
 #  Debug & Development
 DEBUG = config('DEBUG', default=False, cast=config.boolean)
@@ -31,13 +31,18 @@ SECRET_KEY = config('SECRET_KEY', default='example-kn59*npHxq)G#p7VkwfZCb)RgtUWa
 
 #  Media & Static
 MEDIA_URL = "/media/"
-MEDIA_ROOT = config('MEDIA_ROOT', default=str(FRONTEND_DIR / 'media'))
+MEDIA_ROOT = config('MEDIA_ROOT', default=FRONTEND_DIR.child("media"))
 
-STATIC_URL = config('STATIC_URL', default='/static/')
-STATIC_ROOT = config('STATIC_ROOT', default=str(PROJECT_DIR / 'collected_static'))
+# STATIC_URL = config('STATIC_URL', default='/static/')
+STATIC_URL = '/static/'
+
+
+STATIC_ROOT = config(
+    'STATIC_ROOT', default=str(FRONTEND_DIR.child('collected_static'))
+)
 
 STATICFILES_DIRS = [
-    str(FRONTEND_DIR / 'static'),
+    FRONTEND_DIR.child("static"),
 ]
 
 STATICFILES_FINDERS = (
@@ -45,15 +50,14 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder'
 )
 
-
 #  Templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'APP_DIRS': True,
         'DIRS': (
-            str(FRONTEND_DIR / "templates"),
+            FRONTEND_DIR.child("templates"),
         ),
+        'APP_DIRS': True,
         'OPTIONS': {
             'debug': config("TEMPLATE_DEBUG", default=DEBUG, cast=config.boolean),
             'context_processors': [
@@ -61,7 +65,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.media'
             ],
         },
     },
@@ -73,7 +76,6 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -82,9 +84,9 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'funeraria.urls'
 WSGI_APPLICATION = 'funeraria.wsgi.application'
 
-CACHES = {
-    'default': config('CACHE_URL', default='locmem://', cast=parse_cache_url)
-}
+# CACHES = {
+#     'default': config('CACHE_URL', default='locmem://', cast=parse_cache_url)
+# }
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
@@ -133,7 +135,7 @@ LANGUAGES = (
     ("pt-br", "Português (Brasil)"),
 )
 LOCALE_PATHS = (
-    str(PROJECT_DIR / "locale"),
+    PROJECT_DIR.child("locale"),
 )
 
 

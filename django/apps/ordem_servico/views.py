@@ -1,19 +1,18 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import ListView
 
 from .models import OrdemServico
 
 
-class OrdemServicoView(LoginRequiredMixin, TemplateView):
+class OrdemServicoView(LoginRequiredMixin, ListView):
+    context_object_name = "ordem_servicos"
+    queryset = OrdemServico.objects.all()
     template_name = "ordem_servico/listagem.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
-        ordem_servicos = OrdemServico.objects.all()
         context['page_title'] = 'Ordem de Serviço'
-        context['ordem_servicos'] = ordem_servicos
         return context
 
 

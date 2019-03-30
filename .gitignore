@@ -1,6 +1,5 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[cod]
 *$py.class
 
 # C extensions
@@ -44,8 +43,8 @@ nosetests.xml
 coverage.xml
 *,cover
 .hypothesis/
-.pytest_cache/
-django/.pytest_cache/
+.pytest_cache
+
 
 # Translations
 *.pot
@@ -66,22 +65,13 @@ target/
 # environment
 .env
 .venv
-
-*.iml
 .idea
 node_modules
 target
-*.log
 *.swp
 *.sqlite3
 releases
-.cache
-.pytest_cache
-*attachments/*
 *media*
-ui/js/browser/site
-ui/sass/site
-*media/*
 .vscode/
 */.pytest_cache
 *.rdb
