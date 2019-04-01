@@ -69,19 +69,14 @@ class TipoCafe(TimestampedModel):
 
 class OrdemServico(TimestampedModel):
     funeraria = models.ForeignKey(Funeraria, on_delete=models.CASCADE)
-
     falecido = models.CharField(max_length=50)
     cpf_falecido = models.CharField(max_length=50)
-
-    especie = models.CharField(max_length=12, default='convencional', choices=TIPO_SERVICO)
+    especie = models.CharField(max_length=14, default='convencional', choices=TIPO_SERVICO)
     abrangencia = models.CharField(max_length=22, default='servico_completo', choices=ABRANGENCIA)
-
     tipo = models.ForeignKey(TipoServico, on_delete=models.CASCADE)
     taxas_apagar = models.ForeignKey(TaxaPagar, on_delete=models.CASCADE)
     remocao = models.ForeignKey(LocalRemocao, on_delete=models.CASCADE)
-
     codigo = models.IntegerField()
-
     urna = models.IntegerField()
     biblia = models.BooleanField()
     cristo = models.BooleanField()
@@ -89,12 +84,10 @@ class OrdemServico(TimestampedModel):
     veu = models.BooleanField()
     preparacao = models.ForeignKey(Preparacao, on_delete=models.CASCADE)
     ornamentacao = models.ForeignKey(Ornamentacao, on_delete=models.CASCADE)
-
     obs_ornamentacao = models.CharField(max_length=50)
     cafe = models.ForeignKey(TipoCafe, on_delete=models.CASCADE)
     local_velorio = models.CharField(max_length=100, blank=True, null=True)
     local_sepultamento = models.CharField(max_length=100, blank=True, null=True)
-
     previsao_velorio = models.DateTimeField(blank=True, null=True)
     data_sepultamento = models.DateTimeField(blank=True, null=True)
     inicio_remocao = models.DateTimeField(blank=True, null=True)
@@ -111,7 +104,6 @@ class OrdemServico(TimestampedModel):
     termino_cafe = models.DateTimeField(blank=True, null=True)
     inicio_flora = models.DateTimeField(blank=True, null=True)
     termino_flora = models.DateTimeField(blank=True, null=True)
-
     status = models.CharField(max_length=22, default='aberto', choices=STATUS)
 
     def __str__(self):

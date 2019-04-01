@@ -1,6 +1,5 @@
 {% extends '../base.html' %}
 {% load static %}
-
 {% block content %}
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
@@ -9,6 +8,24 @@
     <li class="breadcrumb-item active">{{ page_title }}</li>
   </ol>
 
+  
+<div class="row">
+    <div class="col-xl-3 col-sm-6 mb-3">
+      <div class="card text-white bg-primary o-hidden h-100">
+        <div class="card-body">
+          <div class="card-body-icon">
+            <i class="fas fa-fw fa-paperclip"></i>
+          </div>
+          <div class="mr-5">Cadastrar Ordem de Serviço</div>
+        </div>
+        <a class="card-footer text-white clearfix small z-1" href="{% url 'ordem_servico:os_create' %}">
+          <span class="float-left">Cadastrar</span>
+          <span class="float-right">
+                  <i class="fas fa-angle-right"></i>
+                </span>
+        </a>
+      </div>
+    </div>
 
   <div class="card mb-3">
     <div class="card-header">
@@ -20,7 +37,7 @@
         <table class="table table-bordered" width="100%" cellspacing="0">
           <thead>
           <tr>
-            <th>Funeraria</th>
+            <th>Funerariaaaaa</th>
             <th>OS</th>
             <th>Falecido</th>
             <th>Prev. Velório</th>

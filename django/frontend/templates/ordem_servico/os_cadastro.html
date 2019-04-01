@@ -1,0 +1,48 @@
+{% extends '../base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="{% url 'core:home' %}">Inicio</a>
+    </li>
+    <li class="breadcrumb-item active">{{ page_title }}</li>
+  </ol>
+
+<div class="box">
+
+  {% if form.non_field_errors %}
+    <h4 class="alert-danger">{{ form.non_field_errors.as_text }}</h4>
+  {% endif %}
+  <form class="form-horizontal" role="form" method="post" action="." enctype="multipart/form-data">
+    {% csrf_token %}
+    {%for field in form%}
+
+      <div  id="group-id-{{ field.name }}" class="form-group form-inline {% if field.errors %}has-error{% endif %}">
+      <label for="id_{{ field.name }}" class="col-sm-2 col-md-2 control-label">  </label>
+        {% if field.errors %}
+          {% render_field field class+="form-control form-control-red-fill" %}
+          <span class="text-danger">{{ field.errors.as_text }}</span>
+        {% else %}
+          {% if field.name == 'parent' %}
+            {% render_field field class+="form-control" %}
+          {% else %}
+          {% render_field field class+="form-control" size=100 %}
+          {% endif %}
+        {% endif %}
+    </div>
+    {%endfor%}
+    <br />
+    <hr />
+    <div class="form-group">
+      <a href="{% url 'ordem_servico:listagem' %}" class="btn btn-inline btn-danger">Cancelar</a>
+      <button class="btn btn-inline btn-success" type="submit">{% "Salvar" %}</button>
+    </div>
+  </form>
+</div>
+  
+    <div class="card-footer small text-muted"></div>
+  </div>
+
+{% endblock %}
