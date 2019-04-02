@@ -39,6 +39,7 @@ class OrdemServicoCreate(LoginRequiredMixin, CreateView):
         'inicio_flora', 'termino_flora'
     )
     template_name = "ordem_servico/os_cadastro.html"
+    success_url= "http://127.0.0.1:8000/ordem_servico/agentes/"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
