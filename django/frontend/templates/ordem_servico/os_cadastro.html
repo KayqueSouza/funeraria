@@ -7,67 +7,42 @@
     <li class="breadcrumb-item">
       <a href="{% url 'core:home' %}">Inicio</a>
     </li>
+    <li class="breadcrumb-item">
+      <a href="{% url 'ordem_servico:listagem' %}">Listagem de Ordem de Serviços</a>
+    </li>
     <li class="breadcrumb-item active">{{ page_title }}</li>
   </ol>
 
-<form class="form-horizontal" role="form" method="post" enctype="multipart/form-data" >
-  {% csrf_token %}
-
-  <label for="{{ form.funeraria.id_for_label }}">Funerária</label>
-   {{ form.funeraria }}
-   
-  <label for="{{ form.falecido.id_for_label }}">Falecido</label>
-  {{ form.falecido }}
-
-  <label for="{{ form.cpf_falecido.id_for_label }}">CPF</label>
-  {{ form.cpf_falecido }}
-  <label for="{{ form.especie.id_for_label }}">Espécie</label>
-  {{ form.especie }}
-  <label for="{{ form.abrangencia.id_for_label }}">Abrangencia</label>
-  {{ form.abrangencia }}
-  <label for="{{ form.tipo.id_for_label }}">Tipo</label>
-  {{ form.tipo }}
-  <label for="{{ form.taxas_apagar.id_for_label }}">Taxas a pagar?</label>
-  {{ form.taxas_apagar }}
-  <label for="{{ form.remocao.id_for_label }}">Local de Remoção</label>
-  {{ form.remocao }}
-  <label for="{{ form.codigo.id_for_label }}">Ordem de Serviço</label>
-  {{ form.codigo }}
-  <label for="{{ form.urna.id_for_label }}">Urna</label>
-  {{ form.urna }}
-
-  <label for="{{ form.biblia.id_for_label }}">Biblia</label>
-  {{ form.biblia }}
-  <label for="{{ form.cristo.id_for_label }}">Cristo</label>
-  {{ form.cristo }}
-  <label for="{{ form.sem_adereco.id_for_label }}">Sem Adereço</label>
-  {{ form.sem_adereco }}
-  <label for="{{ form.veu.id_for_label }}">Véu</label>
-  {{ form.veu }}
-  <label for="{{ form.preparacao.id_for_label }}">Preparação</label>
-  {{ form.preparacao }}
-
-
- 
-
+  <div class="card mb-3">
+  <div class="card-header">
+    <i class="fas fa-table"></i>
+    Lista Serviços
   </div>
+  <div class="card-body">
 
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-header">
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body pad">
+            <form class="form-horizontal" role="form" method="post" action="." enctype="multipart/form-data">
+              {% csrf_token %}
+              {% include "../includes/form_errors.html" with form=form %}
+              {% for field in form %}
+                          {% include '../includes/form_field.html' with field=field %}
 
-
-
-
-
-
-
-
-
-
-  <button type="submit">Cadastrar</button>
-</form>
-
-
-  
-    <div class="card-footer small text-muted"></div>
+              {% endfor %}
+              <div class="box-footer">
+                <a href="{% url 'ordem_servico:listagem' %}" class="btn btn-default">Cancelar</a>
+                <button class="btn btn-primary pull-right" type="submit">Salvar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
 {% endblock %}

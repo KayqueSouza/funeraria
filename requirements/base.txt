@@ -3,6 +3,7 @@ django-cache-url
 django-cors-headers
 django-filter
 django-stuff
+django-widget-tweaks
 Django
 prettyconf
 psycopg2
