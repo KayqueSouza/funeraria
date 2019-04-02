@@ -3,11 +3,10 @@ from django.db import models
 # Create your models here.
 
 ESTADO_CIVIL = (
-('solteiro','Solteiro'),
-('casado','Casado'),
-
-
-
+('solteiro','Solteiro(a)'),
+('casado','Casado(a)'),
+('divorciado','Divorciado(a)'),
+('viuvo', 'Viúvo(a)')
 )
 
 class Usuario(models.Model):
@@ -16,7 +15,7 @@ class Usuario(models.Model):
     usuario_rg = models.CharField(max_length=30)
     usuario_cep = models.CharField(max_length=11)
     usuario_profissao = models.CharField(max_length = 20)
-    usuario_estado_civil = models.CharField(max_length = 20)
+    usuario_estado_civil = models.CharField(max_length = 20, choices=ESTADO_CIVIL)
     usuario_rua = models.CharField(max_length=50)
     usuario_bairro = models.CharField(max_length=20)
     usuario_cidade = models.CharField(max_length=20)

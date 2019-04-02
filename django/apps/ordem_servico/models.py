@@ -17,6 +17,8 @@ STATUS = (
 )
 
 
+
+
 class TipoServico(TimestampedModel):
     tipo_servico = models.CharField(max_length=30)
 
