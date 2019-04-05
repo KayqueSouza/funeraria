@@ -6827,7 +6827,13 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background-color: #343a40 !important;
+  background: url("https://images3.alphacoders.com/654/thumb-1920-654159.png") no-repeat no-repeat;
+  /*floresta ==> https://i.pinimg.com/originals/ca/a2/65/caa2654e79e2dc88c6a3c18e1a353452.jpg*/
+  /*Purple energy !!! ==> https://images3.alphacoders.com/654/thumb-1920-654159.png*/
+  /* homem espaço legal =>http://www.diarioonline.com.br/app/painel/modulo-noticia/img/imagensdb/destaque-466292-delicate-arch-960279_1920.jpg*/
+  /*metropax site ==> https://assets.izap.com.br/metropax.com.br/plus/images?src=destaque/plusfiles/Prancheta_2.png&mode=crop&width=1920&height=800*/
+  /*background-color: #333;*/
+  /*background-color: #343a40 !important;*/
 }
 
 a.bg-dark:hover, a.bg-dark:focus,

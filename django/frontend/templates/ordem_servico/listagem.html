@@ -1,5 +1,9 @@
 {% extends '../base.html' %}
 {% load static %}
+{% block extrastyle %}
+  <!-- Page level plugin CSS-->
+  <link href="{% static 'vendor/datatables/dataTables.bootstrap4.css' %}" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
   <ol class="breadcrumb">
@@ -17,7 +21,7 @@
           Lista Serviços
         </div>
         <div class="col-xs-8 ml-auto">
-          <a class="btn btn-primary" href="{% url 'ordem_servico:criar' %}">Nova OS</a>
+          <a class="btn btn-primary" href="{% url 'ordem_servico:os_cadastro' %}">Nova OS</a>
         </div>
       </div>
 
@@ -62,4 +66,15 @@
     <div class="card-footer small text-muted"></div>
   </div>
 
+{% endblock %}
+{% block extrascripts %}
+
+<!-- Page level plugin JavaScript-->
+<script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+<script src="{% static 'vendor/datatables/jquery.dataTables.js' %}"></script>
+<script src="{% static 'vendor/datatables/dataTables.bootstrap4.js' %}"></script>
+
+<!-- Demo scripts for this page-->
+<script src="{% static 'js/demo/datatables-demo.js' %}"></script>
+<script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
 {% endblock %}
