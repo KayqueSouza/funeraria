@@ -11,4 +11,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.core.urls')),
     path('ordem_servico/', include('apps.ordem_servico.urls')),
+    path('pedido_material/', include('apps.pedido_material.urls')),
+
+
 ]

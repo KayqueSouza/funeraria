@@ -1,0 +1,78 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block extrastyle %}
+  <!-- Page level plugin CSS-->
+  <link href="{% static 'vendor/datatables/dataTables.bootstrap4.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="{% url 'core:home' %}">Inicio</a>
+    </li>
+    <li class="breadcrumb-item active">{{ page_title }}</li>
+  </ol>
+
+  <div class="card mb-3">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-xs-8">
+          <i class="fas fa-table"></i>
+          Lista Serviços
+        </div>
+        <div class="col-xs-8 ml-auto">
+          <a class="btn btn-primary" href="{% url 'ordem_servico:os_cadastro' %}">Nova OS</a>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" width="100%" cellspacing="0">
+          <thead>
+          <tr>
+            <th>Código</th>
+            <th>Funerária</th>
+            <th>Solicitante</th>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Status</th>
+            <th>Botão</th>
+
+          </tr>
+          </thead>
+          </tbody>
+          {% for pedido in pedidos_materiais %}
+            <tr>
+              <td>{{ pedido.pk }}</td>
+              <td>{{ pedido.funeraria }}</td>
+              <td>{{ pedido.solicitante }}</td>
+              <td>{{ pedido.produto }}</td>
+              <td>{{ pedido.quantidade }}</td>
+              <td>{{ pedido.status_atual }}</td>
+
+              <td>
+                <button> Finalizar</button>
+              </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card-footer small text-muted"></div>
+  </div>
+
+{% endblock %}
+{% block extrascripts %}
+
+<!-- Page level plugin JavaScript-->
+<script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+<script src="{% static 'vendor/datatables/jquery.dataTables.js' %}"></script>
+<script src="{% static 'vendor/datatables/dataTables.bootstrap4.js' %}"></script>
+
+<!-- Demo scripts for this page-->
+<script src="{% static 'js/demo/datatables-demo.js' %}"></script>
+<script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
+{% endblock %}
