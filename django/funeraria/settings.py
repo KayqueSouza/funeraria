@@ -110,6 +110,7 @@ INSTALLED_APPS = [
     'apps.ordem_servico',
     'apps.usuario',
     'apps.pedido_material',
+    'apps.hospitais',
 ]
 
 AUTH_PASSWORD_VALIDATORS = [

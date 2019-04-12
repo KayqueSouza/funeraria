@@ -1,0 +1,48 @@
+{% extends '../base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="{% url 'core:home' %}">Inicio</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a href="{% url 'ordem_servico:listagem' %}">Listagem de Ordem de Serviços</a>
+    </li>
+    <li class="breadcrumb-item active">{{ page_title }}</li>
+  </ol>
+
+  <div class="card mb-3">
+  <div class="card-header">
+    <i class="fas fa-table"></i>
+    Lista Serviços
+  </div>
+  <div class="card-body">
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-header">
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body pad">
+            <form class="form-horizontal" role="form" method="post" action="." enctype="multipart/form-data">
+              {% csrf_token %}
+              {% include "../includes/form_errors.html" with form=form %}
+              {% for field in form %}
+                          {% include '../includes/form_field_obito_hosp.html' with field=field %}
+
+              {% endfor %}
+              <div class="box-footer">
+                <a href="{% url 'ordem_servico:listagem' %}" class="btn btn-default">Cancelar</a>
+                <button class="btn btn-primary pull-right" type="submit">Salvar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
