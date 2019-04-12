@@ -38,7 +38,7 @@
             <th>Produto</th>
             <th>Quantidade</th>
             <th>Status</th>
-            <th>Botão</th>
+            <th>Ações</th>
 
           </tr>
           </thead>
@@ -53,7 +53,17 @@
               <td>{{ pedido.status_atual }}</td>
 
               <td>
-                <button> Finalizar</button>
+                <a class="btn btn-secundary" href="#">
+                  <i class="fas fa-search-dollar"></i>
+                </a>
+                <a class="btn btn-secundary" href="?">
+                  <i class="fas fa-check-circle"></i>
+                </a>
+                <a class="btn btn-secundary" href="?">
+                  <i class="fas fa-frown-open"></i>
+                </a>
+    
+                
               </td>
             </tr>
           {% endfor %}
