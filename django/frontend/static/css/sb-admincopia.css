@@ -67,7 +67,7 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 [tabindex="-1"]:focus {
@@ -6827,8 +6827,7 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background: url("https://images4.alphacoders.com/592/592367.jpg") no-repeat no-repeat;
-  /* outro legal ==> https://i.pinimg.com/originals/48/20/b1/4820b1b0cb074261f04538be6eafd0de.jpg
+  background: url("https://assets.izap.com.br/metropax.com.br/plus/images?src=destaque/plusfiles/Prancheta_2.png&mode=crop&width=1920&height=800") no-repeat no-repeat;
   /*floresta ==> https://i.pinimg.com/originals/ca/a2/65/caa2654e79e2dc88c6a3c18e1a353452.jpg*/
   /*Purple energy !!! ==> https://images3.alphacoders.com/654/thumb-1920-654159.png*/
   /* homem espaço legal =>http://www.diarioonline.com.br/app/painel/modulo-noticia/img/imagensdb/destaque-466292-delicate-arch-960279_1920.jpg*/

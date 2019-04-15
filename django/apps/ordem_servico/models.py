@@ -57,10 +57,10 @@ class Ornamentacao(TimestampedModel):
 class Funeraria(TimestampedModel):
     nome = models.CharField(max_length=50)
     cnpj = models.CharField(max_length=30)
-    fun_razao_social = models.CharField(max_length=50)
-    fun_endereco = models.CharField(max_length=50)
+    razao_social = models.CharField(max_length=120)
+    endereco = models.CharField(max_length=50)
     def __str__(self):
-        return self.fun_razao_social
+        return self.razao_social
 
 
 class TipoCafe(TimestampedModel):

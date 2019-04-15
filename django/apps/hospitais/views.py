@@ -49,7 +49,7 @@ class ObitoHospitalCreate(LoginRequiredMixin, CreateView):
         'nome_atendente','nome_agente'
     )
     template_name = "hospitais/obito_hospitais_cadastro.html"
-    success_url = reverse_lazy('hospitais:obitos_hospitais_listagem')
+    success_url = reverse_lazy('hospitais:hospitais_home')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

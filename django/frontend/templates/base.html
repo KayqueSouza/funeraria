@@ -13,7 +13,7 @@
   <link rel="shortcut icon" href="{%  static 'vendor/favicon.ico' %}">
 
   {% block title %}
-    <title>Sistema Metropax - Dashboard</title>
+    <title>Intranet Metropax</title>
   {% endblock %}
 
   <!-- Custom fonts for this template-->
@@ -140,6 +140,10 @@
         <a class="dropdown-item" href="#">Seguradoras</a>
         <a class="dropdown-item" href="{% url 'pedido_material:listagem' %}">Compras</a>
         <a class="dropdown-item" href="{% url 'hospitais:hospitais_home' %}">Hospitais</a>
+        <div class="dropdown-divider"></div>
+        <h6 class="dropdown-header">Funerária</h6>
+        <a class="dropdown-item" href="{% url 'ordem_servico:agentes' %}">Transporte</a>
+        <a class="dropdown-item" href="#">Copa</a>
         <div class="dropdown-divider"></div>
         <h6 class="dropdown-header">Cadastros</h6>
         <a class="dropdown-item" href="{% url 'ordem_servico:agentes' %}">Cadastrar Usuario</a>
