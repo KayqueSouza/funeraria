@@ -1,0 +1,59 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block content %}
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="{% url 'core:home' %}">Inicio</a>
+    </li>
+    <li class="breadcrumb-item active">{{ page_title }}</li>
+  </ol>
+
+      <div class="col-xs-8 ml-auto">
+        <a class="btn btn-primary" href="{% url 'hospitais:novo_obito_hospital' %}">Novo lançamento</a>
+      </div> <br><br>
+
+  <div class="card mb-3">
+    <div class="card-header">
+      <i class="fas fa-table"></i>
+      Lista dos óbitos ocorridos em hospitais conveniados
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+          <tr>
+            <th>Hospital</th>
+            <th>Data</th>
+            <th>Falecido</th>
+            <th>Responsável</th>
+            <th>Tel. Responsável</th>
+            <th>Funerária</th>
+            <th>Mot. Não. Atend.</th>
+            <th>Atendente</th>
+            <th>Agente</th>
+            
+          </tr>
+          </thead>
+          <tbody>
+          {% for obito in obitos_hospitais %}
+            <tr>
+              <td>{{ obito.hospital }}</td>
+              <td>{{ obito.data_falecimento }}</td>
+              <td>{{ obito.nome_falecido}}</td>
+              <td>{{ obito.nome_responsavel }}</td>
+              <td>{{ obito.tel_responsavel }}</td>
+              <td>{{ obito.funeraria }}</td>
+              <td>{{ obito.motivo_nao_atendimento }}</td>
+              <td>{{ obito.nome_atendente }}</td>
+              <td>{{ obito.nome_agente }}</td>
+              
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card-footer small text-muted"></div>
+  </div>
+
+{% endblock %}

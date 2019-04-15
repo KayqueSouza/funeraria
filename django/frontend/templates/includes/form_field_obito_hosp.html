@@ -13,11 +13,11 @@
     {% render_field field class+="form-control form-control-red-fill" %}
     {% include '../includes/form_field_errors.html' with field=field %}
   {% else %}
-    {% if field.name == 'state' or field.name == 'profile' or field.name == 'funeraria' or field.name == 'especie' or field.name == 'abrangencia' %}
+    {% if field.name == 'state' or field.name == 'profile' or field.name == 'funeraria' or field.name == 'solicitante' or field.name == 'produto' or field.name == 'solicitante' or field.name == 'hospital' or field.name == 'funeraria' or field.name == 'motivo_nao_atendimento' or field.name == 'nome_atendente' or field.name == 'nome_agente'  %}
         <div class="col-sm-1">
       {% render_field field class+="form-control select2" width="100%" %}
         </div>
-    {% elif field.name == 'tipo' or field.name == 'taxas_apagar' or field.name == 'remocao' or field.name == 'cafe' or field.name == 'preparacao' or field.name == 'ornamentacao' %}
+    {% elif field.name == 'tipo' or field.name == 'taxas_apagar' or field.name == 'remocao' or field.name == 'cafe' or field.name == 'preparacao' or field.name == 'ornamentacao' or field.name == 'nome_falecido' or field.name == 'nome_responsavel' or field.name == 'tel_responsavel'%}
       <div class="col-sm-1">
       {% render_field field class+="form-control select2" width="100%" %}
         </div>
@@ -25,7 +25,7 @@
       {% render_field field class+="form-control" %}
     {% elif field.name == 'city' %}
       {% render_field field class+="form-control select2" disabled=disabled width="100%" %}
-    {% elif 'phone' in field.name or field.name == 'message_to'  %}
+    {% elif 'phone' in field.name or field.name == 'message_to' or 'tel_' in field.name %}
       <div class="col-sm-2">
       <div class="input-group">
         <div class="input-group-addon"><i class="fa fa-phone"></i></div>
@@ -49,13 +49,22 @@
                data-inputmask='"mask": "99999-999"'
                data-mask>
       </div>
-    {% elif 'inicio_' in field.name or 'termino_' in field.name %}
+    {% elif 'inicio_' in field.name or 'termino_' in field.name  %}
       <div class="col-sm-2">
         {% render_field field class+="form-control" %}
       </div>
       <script type="text/javascript">
             $(function () {
                 $('#{{field.name}}').datetimepicker();
+            });
+        </script>
+    {% elif 'data' in field.name%}
+      <div class="col-sm-2">
+        {% render_field field class+="form-control" %}
+      </div>
+      <script type="text/javascript">
+            $(function () {
+                $('#{{field.name}}').datepicker();
             });
         </script>
     {% elif field.name == 'number' %}

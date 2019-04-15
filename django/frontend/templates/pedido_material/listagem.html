@@ -21,7 +21,7 @@
           Lista Serviços
         </div>
         <div class="col-xs-8 ml-auto">
-          <a class="btn btn-primary" href="{% url 'ordem_servico:criar' %}">Nova OS</a>
+          <a class="btn btn-primary" href="{% url 'ordem_servico:os_cadastro' %}">Nova OS</a>
         </div>
       </div>
 
@@ -32,30 +32,38 @@
         <table class="table table-bordered" width="100%" cellspacing="0">
           <thead>
           <tr>
-            <th>Funeraria</th>
-            <th>OS</th>
-            <th>Falecido</th>
-            <th>Prev. Velório</th>
-            <th>Café</th>
-            <th>Obs. Café</th>
-            <th>Início do Preparo</th>
-            <th>Termino do Preparo</th>
-            <th>Ação</th>
+            <th>Código</th>
+            <th>Funerária</th>
+            <th>Solicitante</th>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Status</th>
+            <th>Ações</th>
+
           </tr>
           </thead>
           </tbody>
-          {% for ordem in ordem_servicos %}
+          {% for pedido in pedidos_materiais %}
             <tr>
-              <td>{{ ordem.funeraria }}</td>
-              <td>{{ ordem.codigo }}</td>
-              <td>{{ ordem.falecido }}</td>
-              <td>{{ ordem.previsao_velorio }}</td>
-              <td>{{ ordem.cafe }}</td>
-              <td>{{ ordem.cafe }}</td>
-              <td>{{ ordem.inicio_cafe }}</td>
-              <td>{{ ordem.termino_cafe }}</td>
+              <td>{{ pedido.pk }}</td>
+              <td>{{ pedido.funeraria }}</td>
+              <td>{{ pedido.solicitante }}</td>
+              <td>{{ pedido.produto }}</td>
+              <td>{{ pedido.quantidade }}</td>
+              <td>{{ pedido.status_atual }}</td>
+
               <td>
-                <button> Finalizar</button>
+                <a class="btn btn-secundary" href="#">
+                  <i class="fas fa-search-dollar"></i>
+                </a>
+                <a class="btn btn-secundary" href="?">
+                  <i class="fas fa-check-circle"></i>
+                </a>
+                <a class="btn btn-secundary" href="?">
+                  <i class="fas fa-frown-open"></i>
+                </a>
+    
+                
               </td>
             </tr>
           {% endfor %}

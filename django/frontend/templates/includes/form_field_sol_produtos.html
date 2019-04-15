@@ -13,7 +13,7 @@
     {% render_field field class+="form-control form-control-red-fill" %}
     {% include '../includes/form_field_errors.html' with field=field %}
   {% else %}
-    {% if field.name == 'state' or field.name == 'profile' or field.name == 'funeraria' or field.name == 'especie' or field.name == 'abrangencia' %}
+    {% if field.name == 'state' or field.name == 'profile' or field.name == 'funeraria' or field.name == 'solicitante' or field.name == 'produto' %}
         <div class="col-sm-1">
       {% render_field field class+="form-control select2" width="100%" %}
         </div>

@@ -1,6 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views.generic import ListView, CreateView, FormView
+from django.urls import reverse_lazy
 
 from .models import OrdemServico
 
@@ -39,7 +40,7 @@ class OrdemServicoCreate(LoginRequiredMixin, CreateView):
         'inicio_flora', 'termino_flora'
     )
     template_name = "ordem_servico/os_cadastro.html"
-    success_url= "http://127.0.0.1:8000/ordem_servico/agentes/"
+    success_url = reverse_lazy('ordem_servico:listagem')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
