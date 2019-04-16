@@ -5,5 +5,5 @@ app_name = 'circulares'
 urlpatterns = [
     path('', views.CircularesView.as_view(), name='circulares_list'),
     path('circular/', views.CircularView.as_view(), name='circular'),
-    path('criar/', views.CircularCreate.as_view(), name='criar')  , 
+    path('criar/', views.CircularCreate.as_view(), name='criar'),
 ]

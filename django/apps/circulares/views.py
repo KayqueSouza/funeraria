@@ -40,3 +40,5 @@ class CircularCreate(LoginRequiredMixin, CreateView):
         context = super().get_context_data(**kwargs)
         context['page_title'] = 'Criar Circular'
         return context
+
+
