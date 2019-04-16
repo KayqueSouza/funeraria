@@ -26,3 +26,17 @@ class CircularView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['page_title'] = 'Circular'
         return context
+
+
+class CircularCreate(LoginRequiredMixin, CreateView):
+    model = Circular
+    fields = (
+        'emitente','setor_destinatario','data_criacao','assunto', 'texto'
+    )
+    template_name = "circulares/circular_cadastro.html"
+    success_url = reverse_lazy('circulares:circulares_list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_title'] = 'Criar Circular'
+        return context

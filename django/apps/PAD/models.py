@@ -20,4 +20,4 @@ STATUS = (
 
 
 class PAD(models.Model):
-    pass
+    item = models.CharField(max_length = 10)

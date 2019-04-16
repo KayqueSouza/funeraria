@@ -21,6 +21,14 @@
       <div class="col-sm-1">
       {% render_field field class+="form-control select2" width="100%" %}
         </div>
+    {% elif field.name == 'emitente' or field.name == 'setor_destinatario' or field.name == 'assunto' %}
+      <div class="col-sm-1">
+      {% render_field field class+="form-control select2" width="100%" %}
+        </div>
+    {% elif field.name == 'texto' %}
+      <div class="col-sm-3">
+      {% render_field field class+="form-control select2" width="100%" %}
+        </div>
     {% elif field.name == 'sex' %}
       {% render_field field class+="form-control" %}
     {% elif field.name == 'city' %}
@@ -49,7 +57,7 @@
                data-inputmask='"mask": "99999-999"'
                data-mask>
       </div>
-    {% elif 'inicio_' in field.name or 'termino_' in field.name %}
+    {% elif 'inicio_' in field.name or 'termino_' in field.name or 'data' in fiel.name%}
       <div class="col-sm-2">
         {% render_field field class+="form-control" %}
       </div>

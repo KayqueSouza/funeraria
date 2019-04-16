@@ -14,6 +14,7 @@ urlpatterns = [
     path('pedido_material/', include('apps.pedido_material.urls')),
     path('hospitais/', include('apps.hospitais.urls')),
     path('circulares/', include('apps.circulares.urls')),
+    path('pad/', include('apps.pad.urls')),
 
 
 ]
