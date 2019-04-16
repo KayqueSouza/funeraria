@@ -23,8 +23,6 @@ STATUS = (
 class PedidoMaterial(TimestampedModel):
     funeraria = models.ForeignKey(Funeraria, on_delete=models.CASCADE)
     solicitante = models.ForeignKey(Usuario, on_delete=models.CASCADE) 
-    produto = models.ForeignKey(Produtos, on_delete=models.CASCADE)
-    quantidade = models.IntegerField()
     data_cotando = models.DateTimeField(blank=True, null=True)
     data_disponivel = models.DateTimeField(blank=True, null=True)
     data_finalizado = models.DateTimeField(blank=True, null=True)
@@ -32,3 +30,17 @@ class PedidoMaterial(TimestampedModel):
 
     def __str__(self):
         return self.solicitante.__str__()
+
+
+class PedidoMaterialProduto(models.Model):
+    pedido_material = models.ForeignKey(
+        PedidoMaterial, related_name='produtos', on_delete=models.CASCADE,
+    )
+    produto = models.ForeignKey(
+        Produtos, related_name='pedidos', on_delete=models.CASCADE,
+    )
+    quantidade = models.IntegerField(default=0)
+    
+
+    def _str_(self):
+        return '{}: {}'.format(self.produto, self.quantidade)
