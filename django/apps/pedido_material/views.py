@@ -1,11 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db import transaction
-from django.shortcuts import render, redirect
-from django.views.generic import ListView, CreateView, FormView
+from django.views.generic import ListView, FormView
 from django.urls import reverse_lazy
-from . import forms
-from .models import PedidoMaterial
+
 from .forms import PedidoMaterialForm, PedidoMaterialFormset
+from .models import PedidoMaterial
 
 
 class PedidoMaterialView(LoginRequiredMixin, ListView):
@@ -19,12 +17,11 @@ class PedidoMaterialView(LoginRequiredMixin, ListView):
         return context
 
 
-
 class PedidoMaterialCreate(LoginRequiredMixin, FormView):
     form_class = PedidoMaterialForm
     template_name = "pedido_material/pedido_material_cadastro.html"
     success_message = "<b>Orçamento de compra  </b>adicionado com sucesso."
-    success_url = reverse_lazy('core:inicial')
+    success_url = reverse_lazy('pedido_material:listagem')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -49,9 +46,6 @@ class PedidoMaterialCreate(LoginRequiredMixin, FormView):
             return super().form_invalid(form)
 
         return super().form_valid(form)
-
-
-    
 
 
 """

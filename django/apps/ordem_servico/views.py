@@ -42,6 +42,7 @@ class OrdemServicoCreate(LoginRequiredMixin, CreateView):
     template_name = "ordem_servico/os_cadastro.html"
     success_url = reverse_lazy('ordem_servico:listagem')
 
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['page_title'] = 'Criar Ordem de Serviço'

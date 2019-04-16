@@ -4,7 +4,7 @@
 
 
 <div id="group-id-{{ field.name }}" class="form-group form-inline {% if field.errors %}has-error{% endif %}">
-  <label for="id_{{ field.name }}" class="col-sm-2 col-md-2
+  <label for="id_{{ field.name }}" class="col-sm-3 col-md-3
     {% if field.name == 'free_shipping' %}control-sidebar-subheading{% else %}control-label{% endif %}">
       {% trans field.label %}
   </label>
@@ -13,25 +13,12 @@
     {% render_field field class+="form-control form-control-red-fill" %}
     {% include '../includes/form_field_errors.html' with field=field %}
   {% else %}
-    {% if field.name == 'state' or field.name == 'profile' or field.name == 'funeraria' or field.name == 'especie' or field.name == 'abrangencia' %}
+    {% if field.name in 'state, profile, funeraria, especie, abrangencia, tipo, taxas_apagar, remocao, cafe, preparacao, ornamentacao, solicitante' %}
         <div class="col-sm-1">
-      {% render_field field class+="form-control select2" width="100%" %}
-        </div>
-    {% elif field.name == 'tipo' or field.name == 'taxas_apagar' or field.name == 'remocao' or field.name == 'cafe' or field.name == 'preparacao' or field.name == 'ornamentacao' %}
-      <div class="col-sm-1">
       {% render_field field class+="form-control select2" width="100%" %}
         </div>
     {% elif field.name == 'sex' %}
       {% render_field field class+="form-control" %}
-    {% elif field.name == 'city' %}
-      {% render_field field class+="form-control select2" disabled=disabled width="100%" %}
-    {% elif 'phone' in field.name or field.name == 'message_to'  %}
-      <div class="col-sm-2">
-      <div class="input-group">
-        <div class="input-group-addon"><i class="fa fa-phone"></i></div>
-        {% render_field field class+="form-control" width="100%" %}
-      </div>
-      </div>
     {% elif field.name == 'cpf' or field.name == 'document_id' %}
       <div class="input-group">
         <div class="input-group-addon"><i class="fa fa-id-card-o"></i></div>
@@ -42,7 +29,7 @@
         <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
         {% render_field field class+="form-control" size="95%" type="email" %}
       </div>
-    {% elif field.name == 'zip_code' %}
+    {% elif field.name == 'cep' %}
       <div class="input-group">
         <div class="input-group-addon"><i class="fa fa-globe"></i></div>
         <input type="text" name="{{ field.name }}" id="id_{{ field.name }}" class="form-control"
@@ -64,10 +51,8 @@
       </div>
     {% elif field.name == 'username' %}
       {% render_field field class+="form-control" %}
-    {% elif field.name == 'password' or field.name  == 'password2' %}
+    {% elif field.name in 'password, password2' %}
       {% render_field field class+="form-control" type="password" %}
-    {% elif field.name == 'free_shipping' or field.name == 'use_tls' %}
-      {{ field }}
     {% else %}
       <div class="col-sm-2">
       {% render_field field class+="form-control" size="100%" %}
