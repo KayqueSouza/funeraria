@@ -1,0 +1,57 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block content %}
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="{% url 'core:home' %}">Inicio</a>
+    </li>
+    <li class="breadcrumb-item active">{{ page_title }}</li>
+  </ol>
+
+      <div class="col-xs-8 ml-auto">
+        <a class="btn btn-primary" href="#">Novo lançamento</a>
+      </div> <br><br>
+
+  <div class="card mb-3">
+    <div class="card-header">
+      <i class="fas fa-table"></i>
+      Circulares
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+          <tr>
+            <th>Número</th>
+            <th>Data</th>
+            <th>Emitente</th>
+            <th>Assunto</th>
+            <th>Status</th>
+            <th>Circular</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for circular in circulares %}
+            <tr>
+              <td>{{ circular.pk }}/2019</td>
+              <td>{{ circular.data_criacao }}</td>
+              <td>{{ circular.emitente }}</td>
+              <td>{{ circular.assunto }}</td>
+              <td>Status</td>
+              <td>
+                <a class="btn btn-secundary" href="{%url 'circulares:circular'%}">
+                  <i class="fas fa-glasses"></i>
+                </a>
+              </td>
+              
+              
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card-footer small text-muted"></div>
+  </div>
+
+{% endblock %}

@@ -92,4 +92,39 @@ class FunerariasMercado(TimestampedModel):
     site = models.CharField(max_length=100, blank=True, null=True)
     def __str__(self):
         return self.nome
+
+class AreaSetor(TimestampedModel):
+    nome = models.CharField(max_length = 30)
+    descricao = models.CharField(max_length = 150)
+    def __str__(self):
+        return self.descricao
+
+class Filial(TimestampedModel):
+    nome = models.CharField(max_length = 30)
+    descricao = models.CharField(max_length = 150)
+    rua = models.CharField(max_length = 150)
+    numero = models.CharField(max_length = 8)
+    complemento = models.CharField(max_length = 150)
+    bairro = models.CharField(max_length = 150)
+    cidade = models.CharField(max_length = 150)
+    estado = models.CharField(max_length=100, choices=ESTADOS, blank=True, null=True)
+    cep = models.CharField(max_length = 15)
+
+    def __str__(self):
+        return self.descricao
+
+
+class Setor(TimestampedModel):
+    nome = models.CharField(max_length = 30)
+    descricao = models.CharField(max_length = 150)
+    area = models.ForeignKey(AreaSetor, on_delete=models.CASCADE)
+    lotacao = models.ForeignKey(Filial, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.descricao
+
+
+
+
+
+    
     

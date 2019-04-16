@@ -1,0 +1,33 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block content %}
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="{% url 'core:home' %}">Inicio</a>
+    </li>
+    <li class="breadcrumb-item active">{{ page_title }}</li>
+  </ol>
+<a href="sss">
+<span>Circular: xx/2019</span>  <br>
+</a>
+<span>Data: xx/xx/xxxx<br></span>
+Emitente: Fulano de tal<br>
+
+Assunto: Assunto teste <br><br>
+
+
+Prezados, vimos através desta salkfjaslkjfalskjfdaslkdfjaslkfjaslkfjalskfjsfkjaslkfjaslkdfja<br>
+fjasçlfdkjaçslkdfjaçslkdfjaçlskdfjçalskdfjçalksdjfçalksdjfçalksjdfçalksjdfçalksjdfçalksdjfça<br>
+açslkfjaçslkfdjaçslkdfjaçlskdjfçalskdjfçalksdjfçalksdjfçlaksjdfçalksjdfçalksjdfçalksjdfçalk
+
+          {% for circular in circulares %}
+            
+
+          {% endfor %}
+          
+      </div>
+    </div>
+    <div class="card-footer small text-muted"></div>
+  </div>
+
+{% endblock %}

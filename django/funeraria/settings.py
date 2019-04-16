@@ -111,6 +111,7 @@ INSTALLED_APPS = [
     'apps.usuario',
     'apps.pedido_material',
     'apps.hospitais',
+    'apps.circulares'
 ]
 
 AUTH_PASSWORD_VALIDATORS = [
