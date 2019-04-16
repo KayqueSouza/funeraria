@@ -1,15 +1,20 @@
 from apps.core.models import Produtos
-from .models import PedidoMaterial
+from .models import PedidoMaterial, PedidoMaterialProduto
 from django.forms import ModelForm, modelformset_factory
 from django import forms
 
-PedidoMaterialFormset = modelformset_factory(
-    PedidoMaterial,
-    fields=('funeraria', 'solicitante', 'quantidade'),
+class PedidoMaterialForm(forms.ModelForm):
+    class Meta:
+        model = PedidoMaterial
+        fields = ('funeraria', 'solicitante')
+
+class PedidoMaterialProdutoForm(forms.ModelForm):
+    class Meta:
+        model = PedidoMaterialProduto
+        fields = ('produto', 'quantidade')
+
+
+PedidoMaterialFormset = forms.formset_factory(
+    form=PedidoMaterialProdutoForm,
     extra=1,
-    widgets={'funeraria': forms.TextInput(attrs={
-            'class': 'form-control',
-            'placeholder': 'Coloque a funeraria aqui'
-        })
-    }
 )

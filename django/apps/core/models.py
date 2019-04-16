@@ -58,9 +58,7 @@ class Medida(TimestampedModel):
     def __str__(self):
         return self.descricao
     
-
-
-
+    
 class Produtos(TimestampedModel):
     descricao = models.CharField(max_length=40)
     medida = models.ForeignKey(Medida, on_delete=models.CASCADE)

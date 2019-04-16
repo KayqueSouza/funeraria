@@ -7,7 +7,7 @@ from .models import (
 
 
 class PedidoMaterialAdmin(admin.ModelAdmin):
-  list_display = ('funeraria','solicitante','produto','quantidade','status_atual')
+  list_display = ('funeraria','solicitante','status_atual')
 
 
 
