@@ -1,10 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import transaction
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView, FormView
 from django.urls import reverse_lazy
 from . import forms
 from .models import PedidoMaterial
+from .forms import BookModelFormset
 
 
 class PedidoMaterialView(LoginRequiredMixin, ListView):
@@ -36,7 +37,7 @@ class PedidoMaterialCreate(LoginRequiredMixin, CreateView):
         else:
             context['produtos'] = forms.ProdutosFormSet()
         return context
-
+"""
     def form_valid(self, form):
         context = self.get_context_data()
         produtos = context['produtos']
@@ -50,6 +51,7 @@ class PedidoMaterialCreate(LoginRequiredMixin, CreateView):
 
 
 
+"""
 """
 class OrdemServicoView(LoginRequiredMixin, ListView):
     context_object_name = "ordem_servicos"
